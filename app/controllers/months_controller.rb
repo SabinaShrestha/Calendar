@@ -2,7 +2,7 @@ class MonthsController < ApplicationController
   before_action :find_month, only: [:show]
 
   def index
-    @month = Month.all
+    @months = Month.all
   end
 
   def show

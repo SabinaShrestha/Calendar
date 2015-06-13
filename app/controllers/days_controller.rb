@@ -1,7 +1,6 @@
 class DaysController < ApplicationController
   before_action :find_month
-  before_action :find_day_from_model, only: [:update, :destroy]
-  before_action :find_day, only: [:edit, :show]
+  before_action :find_day, only: [:edit, :show, :update, :destroy]
 
 
   def index
@@ -50,9 +49,7 @@ class DaysController < ApplicationController
     @month = Month.find(params[:month_id])
   end
 
-  def find_day_from_model
-    @day = Day.find(params[:id])
-  end
+
 
   def find_day
     @day = @month.days.find(params[:id])
