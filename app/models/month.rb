@@ -1,3 +1,3 @@
 class Month < ActiveRecord::Base
-  has_mony :days
+  has_many :days
 end
