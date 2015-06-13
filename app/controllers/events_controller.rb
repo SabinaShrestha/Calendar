@@ -27,8 +27,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @day.update_attributes(day_params)
-      redirect_to month_path(@month.id)
+    if @event.update_attributes(event_params)
+      redirect_to day_path(@day.id)
       else
       render :edit
     end
@@ -38,8 +38,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @day.destroy
-    redirect_to month_path(@month.id)
+    @event.destroy
+    redirect_to day_path(@day.id)
     end
 
   private

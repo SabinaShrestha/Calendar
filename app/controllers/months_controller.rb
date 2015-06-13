@@ -1,12 +1,11 @@
 class MonthsController < ApplicationController
-  before_action :find_month
+  before_action :find_month, only: [:show]
 
   def index
     @month = Month.all
   end
 
   def show
-    
   end
 
   private
@@ -16,7 +15,7 @@ class MonthsController < ApplicationController
   end
 
   def find_month
-    @movie = Movie.find(params[:id])
+    @month = Month.find(params[:id])
   end
 
 end
