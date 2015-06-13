@@ -1,0 +1,14 @@
+<h1 class="page-header">log in</h1>
+<%= form_tag(login_path, class: 'form') do %>
+  <div class="form-group">
+    <%= label_tag(:username, 'Username', class: 'form-label') %>
+    <%= text_field_tag(:username, '', class: 'form-control input-lg', placeholder: 'Enter Username') %>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:password, 'Password', class: 'form-label') %>
+    <%= password_field_tag(:password, '', class: 'form-control input-lg', placeholder: 'Enter Password') %>
+  </div>
+  <div class="form-group">
+    <%= submit_tag('login', class: 'btn btn-lg btn-success') %>
+  </div>
+<% end %>
