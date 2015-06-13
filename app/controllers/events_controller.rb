@@ -1,21 +1,19 @@
 class EventsController < ApplicationController
   before_action :find_month
-  before_action :find_day_from_model, only: [:update, :destroy]
-  before_action :find_day, only: [:edit, :show]
-  before_action :find_event_from_model, only: [:update, :destroy]
-  before_action :find_event, only: [:edit, :show]
+  before_action :find_day
+  before_action :find_event, only: [:edit, :show, :update, :destroy]
 
 
   def index
-    @events = @month.day.events
+    @events = @day.events
   end
 
   def new
-    @event = @month.day.event.build
+    @event = @day.events.build
   end
 
   def create
-    @event = @month.day.event.build(event_params)
+    @event = @day.events.build(event_params)
     if @event.save
       redirect_to day_path(@day.id)
     else
@@ -27,8 +25,8 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @day.update_attributes(day_params)
-      redirect_to month_path(@month.id)
+    if @event.update_attributes(event_params)
+      redirect_to day_path(@day.id)
       else
       render :edit
     end
@@ -38,8 +36,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
-    @day.destroy
-    redirect_to month_path(@month.id)
+    @event.destroy
+    redirect_to day_path(@day.id)
     end
 
   private
@@ -52,20 +50,13 @@ class EventsController < ApplicationController
     @month = Month.find(params[:month_id])
   end
 
-  def find_day_from_model
-    @day = Day.find(params[:id])
-  end
-
   def find_day
     @day = @month.days.find(params[:id])
   end
 
-  def find_event_from_model
-    @event = Event.find(params[:id])
-  end
 
   def find_event
-    @event = @month.day.events.find(params[:id])
+    @event = @day.events.find(params[:id])
   end
 
 end
