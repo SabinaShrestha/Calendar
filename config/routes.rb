@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :months do
     resources :days do
@@ -7,4 +7,3 @@ Rails.application.routes.draw do
     end
   end
 end
-
